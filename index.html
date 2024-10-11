@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate Geometry Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+      <!-- Loading Screen -->
+      <div id="loadingContainer">
+        <div id="logoContainer">
+            <img id="loadingLogo" src="Logo2.png" alt="Logo" />
+            <div id="progressBar">
+                <div id="progress"></div> <!-- This will fill up with green color -->
+            </div>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="container">
+            <img id="logo" src="Logo2.png" alt="Logo" />
+            <canvas id="graphCanvas"></canvas>
+            <div id="calcInfo">
+                <p>Point 1 (x1, y1): <span id="point1Output">(-4, -2)</span></p>
+                <p>Point 2 (x2, y2): <span id="point2Output">(3, 4)</span></p>
+                <p>Distance: <span id="distanceOutput">7.81</span></p>
+                <p>Gradient: <span id="gradientOutput">0.86</span></p>
+                <p>Midpoint: <span id="midpointOutput">(0, 1)</span></p>
+                <p>Equation: <span id="equationOutput">y = 0.86x + 0.58</span></p>
+                <!-- New Quadratic Information -->
+                <p>Quadratic Function: <span id="quadraticEquationOutput">y = ax^2 + bx + c</span></p>
+                <p>Vertex: <span id="vertexOutput">(h, k)</span></p>
+                <p>Axis of Symmetry: <span id="axisOfSymmetryOutput">x = h</span></p>
+                <p>Roots: <span id="rootsOutput">x1, x2</span></p>
+                <p>Directrix: <span id="directrixOutput">y = d</span></p>
+                <p>Focus: <span id="focusOutput">(x, y)</span></p>
+            </div>
+        </div>
+
+        <div id="controls">
+            <!-- Coordinate Geometry Controls -->
+            <label for="point1X">Point 1 X:</label>
+            <input type="range" id="point1X" min="-10" max="10" value="-4">
+            
+            <label for="point1Y">Point 1 Y:</label>
+            <input type="range" id="point1Y" min="-10" max="10" value="-2">
+
+            <label for="point2X">Point 2 X:</label>
+            <input type="range" id="point2X" min="-10" max="10" value="3">
+
+            <label for="point2Y">Point 2 Y:</label>
+            <input type="range" id="point2Y" min="-10" max="10" value="4">
+
+            <label for="quadrilateralToggle">Show Quadrilateral:</label>
+            <input type="checkbox" id="quadrilateralToggle">
+
+            <button id="resetButton">Reset</button>
+
+            <!-- New Quadratic Function Controls -->
+            <label for="aSlider">Quadratic Coefficient a:</label>
+            <input type="range" id="aSlider" min="-5" max="5" step="0.1" value="1">
+            
+            <label for="bSlider">Quadratic Coefficient b:</label>
+            <input type="range" id="bSlider" min="-10" max="10" step="0.1" value="0">
+            
+            <label for="cSlider">Quadratic Coefficient c:</label>
+            <input type="range" id="cSlider" min="-10" max="10" step="0.1" value="0">
+            <button id="quiz" onclick="startQuiz()">Start Quiz</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="sketch.js"></script>
+      <script>
+        // Simulate loading effect
+        window.addEventListener('load', function () {
+            let progressBar = document.getElementById('progress');
+            let loadingContainer = document.getElementById('loadingContainer');
+            let simulationContent = document.getElementById('simulationContent');
+
+            let width = 0;
+            let loading = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(loading);
+                    loadingContainer.style.display = 'none';
+                    simulationContent.style.display = 'block';  // Show simulation content
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }, 30);  // Adjust this value for loading speed
+        
+        
+        
+        
+        });
+    
+        function startQuiz() {
+            window.location.href = 'quiz.html';  
+        }
+    </script>
+</body>
+</html>
